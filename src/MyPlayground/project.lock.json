@@ -161,72 +161,6 @@
           "lib/dnxcore50/Microsoft.AspNet.Authentication.Cookies.dll": {}
         }
       },
-      "Microsoft.AspNet.Authentication.Facebook/1.0.0-beta7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta7",
-          "Newtonsoft.Json": "6.0.6"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Authentication.Google/1.0.0-beta7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta7"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Authentication.MicrosoftAccount/1.0.0-beta7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta7",
-          "System.Dynamic.Runtime": "4.0.11-beta-23225",
-          "System.ObjectModel": "4.0.11-beta-23225"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Authentication.OAuth/1.0.0-beta7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Authentication": "1.0.0-beta7",
-          "Newtonsoft.Json": "6.0.6",
-          "System.Net.Http.WinHttpHandler": "4.0.0-beta-23225"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Authentication.Twitter/1.0.0-beta7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Authentication": "1.0.0-beta7",
-          "System.Net.Http.WinHttpHandler": "4.0.0-beta-23225"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll": {}
-        }
-      },
       "Microsoft.AspNet.Authorization/1.0.0-beta7": {
         "type": "package",
         "dependencies": {
@@ -2260,60 +2194,6 @@
           "lib/dotnet/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Net.Http/4.0.1-beta-23225": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.Primitives": "4.0.0",
-          "System.Collections": "4.0.10",
-          "System.Diagnostics.Debug": "4.0.10",
-          "System.Globalization": "4.0.10",
-          "System.IO": "4.0.10",
-          "System.IO.Compression": "4.0.0",
-          "System.Net.Primitives": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Extensions": "4.0.10",
-          "System.Runtime.Handles": "4.0.0",
-          "System.Runtime.InteropServices": "4.0.20",
-          "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23225",
-          "System.Text.Encoding": "4.0.10",
-          "System.Threading": "4.0.0",
-          "System.Threading.Tasks": "4.0.10"
-        },
-        "compile": {
-          "ref/dotnet/System.Net.Http.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Net.Http.dll": {}
-        }
-      },
-      "System.Net.Http.WinHttpHandler/4.0.0-beta-23225": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.Primitives": "4.0.0",
-          "System.Diagnostics.Debug": "4.0.10",
-          "System.Globalization": "4.0.10",
-          "System.IO": "4.0.10",
-          "System.IO.Compression": "4.0.0",
-          "System.Net.Http": "4.0.0",
-          "System.Net.Primitives": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Extensions": "4.0.10",
-          "System.Runtime.Handles": "4.0.0",
-          "System.Runtime.InteropServices": "4.0.20",
-          "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23225",
-          "System.Text.Encoding": "4.0.10",
-          "System.Threading": "4.0.10",
-          "System.Threading.Tasks": "4.0.10"
-        },
-        "compile": {
-          "lib/DNXCore50/System.Net.Http.WinHttpHandler.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Net.Http.WinHttpHandler.dll": {}
-        }
-      },
       "System.Net.NetworkInformation/4.0.10-beta-23123": {
         "type": "package",
         "dependencies": {
@@ -3198,81 +3078,6 @@
         "Microsoft.AspNet.Authentication.Cookies.1.0.0-beta7.nupkg",
         "Microsoft.AspNet.Authentication.Cookies.1.0.0-beta7.nupkg.sha512",
         "Microsoft.AspNet.Authentication.Cookies.nuspec",
-        "repo.json"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Facebook/1.0.0-beta7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "IscyUexgAgbRg0QVa0MR8KEbmWZn62dimuN/OSTSZCSLdJCvmxNT3n/n+3gbDXxKp4ZBuRm0Q7wwPjcpuA0ljA==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.xml",
-        "Microsoft.AspNet.Authentication.Facebook.1.0.0-beta7.nupkg",
-        "Microsoft.AspNet.Authentication.Facebook.1.0.0-beta7.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Facebook.nuspec",
-        "repo.json"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Google/1.0.0-beta7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "vRyxI2AARMHlQTyFWCOalXwnOp662/zMQO9f24Zf8LBgdHULTPzLSEJ2E0daGlXIDlsKePAa3cRjnRdrKvLehA==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.Authentication.Google.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Google.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.xml",
-        "Microsoft.AspNet.Authentication.Google.1.0.0-beta7.nupkg",
-        "Microsoft.AspNet.Authentication.Google.1.0.0-beta7.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Google.nuspec",
-        "repo.json"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.MicrosoftAccount/1.0.0-beta7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "px7717Ldjm7YqYehgFkKCcUffmdnnNUjWJyzM/MWlvvAASDi1OgzOwYfYyCdJg375pRR0sTYyplidSniNAc9zg==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.xml",
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.1.0.0-beta7.nupkg",
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.1.0.0-beta7.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.nuspec",
-        "repo.json"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.OAuth/1.0.0-beta7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "gn1TZwRcyJf8w+pGU3HBWcySGNqhBb4g9fOAkpzg/Y+5H0YOXmDzSEs2vgHRtGrLDuhyDmkzaOhzqqqzvUbTUA==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.xml",
-        "Microsoft.AspNet.Authentication.OAuth.1.0.0-beta7.nupkg",
-        "Microsoft.AspNet.Authentication.OAuth.1.0.0-beta7.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.OAuth.nuspec",
-        "repo.json"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Twitter/1.0.0-beta7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "/IyjRsPYUVM93AhhaLJhftONugHBvI2XJwFV7cxPTO7tI4ua5uXqh3gfhM6FAwNb57cVbzaNJsGa7+0D0/sn6w==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.xml",
-        "Microsoft.AspNet.Authentication.Twitter.1.0.0-beta7.nupkg",
-        "Microsoft.AspNet.Authentication.Twitter.1.0.0-beta7.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Twitter.nuspec",
         "repo.json"
       ]
     },
@@ -5416,38 +5221,6 @@
         "System.Linq.Queryable.nuspec"
       ]
     },
-    "System.Net.Http/4.0.1-beta-23225": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "PFh0rGs7K+NaRAzijr/ENcFDCOraQ7Tr22Ip++CI298rZWtLsA7nJ/INsibL0clFDwqd/hj4kGwZ65D+9zHwhQ==",
-      "files": [
-        "lib/DNXCore50/System.Net.Http.dll",
-        "lib/net45/_._",
-        "lib/netcore50/System.Net.Http.dll",
-        "lib/win8/_._",
-        "lib/wpa81/_._",
-        "ref/dotnet/System.Net.Http.dll",
-        "ref/net45/_._",
-        "ref/netcore50/System.Net.Http.dll",
-        "ref/win8/_._",
-        "ref/wpa81/_._",
-        "System.Net.Http.4.0.1-beta-23225.nupkg",
-        "System.Net.Http.4.0.1-beta-23225.nupkg.sha512",
-        "System.Net.Http.nuspec"
-      ]
-    },
-    "System.Net.Http.WinHttpHandler/4.0.0-beta-23225": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "PxVx1DgK4oA2CryNlnzZtz9ZG+xupw37Inl/krxLIuQBjCtTQ3S33v6x1g3vKKh0cFptMb91sn6VNufliNhZsA==",
-      "files": [
-        "lib/DNXCore50/System.Net.Http.WinHttpHandler.dll",
-        "lib/net46/System.Net.Http.WinHttpHandler.dll",
-        "System.Net.Http.WinHttpHandler.4.0.0-beta-23225.nupkg",
-        "System.Net.Http.WinHttpHandler.4.0.0-beta-23225.nupkg.sha512",
-        "System.Net.Http.WinHttpHandler.nuspec"
-      ]
-    },
     "System.Net.NetworkInformation/4.0.10-beta-23123": {
       "type": "package",
       "sha512": "NkKpsUm2MLoxT+YlSwexidAw2jGFIJuc6i4H9pT3nU3TQj7MZVursD/ohWj3nyBxthy7i00XLWkRZAwGao/zsg==",
@@ -6483,10 +6256,6 @@
       "EntityFramework.Commands >= 7.0.0-beta7",
       "EntityFramework.SqlServer >= 7.0.0-beta7",
       "Microsoft.AspNet.Authentication.Cookies >= 1.0.0-beta7",
-      "Microsoft.AspNet.Authentication.Facebook >= 1.0.0-beta7",
-      "Microsoft.AspNet.Authentication.Google >= 1.0.0-beta7",
-      "Microsoft.AspNet.Authentication.MicrosoftAccount >= 1.0.0-beta7",
-      "Microsoft.AspNet.Authentication.Twitter >= 1.0.0-beta7",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-beta7",
       "Microsoft.AspNet.Diagnostics.Entity >= 7.0.0-beta7",
       "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-beta7",
