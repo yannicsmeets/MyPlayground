@@ -1,45 +1,67 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding AfterBuild='build' Clean='clean' ProjectOpened='watch' />
 
 var gulp = require("gulp"),
-    rimraf = require("rimraf"),
-    concat = require("gulp-concat"),
-    cssmin = require("gulp-cssmin"),
-    uglify = require("gulp-uglify"),
-    project = require("./project.json");
+    del = require('del'),
+    cssmin = require('gulp-cssmin'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    jshint = require('gulp-jshint'),
+    less = require('gulp-less'),
+    project = require('./project.json');
 
-var paths = {
-    webroot: "./" + project.webroot + "/"
-};
+var directories = {};
+directories.webroot = './' + project.webroot + '/';
+directories.jsSrc = './Scripts';
+directories.jsDest = directories.webroot + 'js';
+directories.lessSrc = './Styles';
+directories.cssDest = directories.webroot + 'css';
 
-paths.js = paths.webroot + "js/**/*.js";
-paths.minJs = paths.webroot + "js/**/*.min.js";
-paths.css = paths.webroot + "css/**/*.css";
-paths.minCss = paths.webroot + "css/**/*.min.css";
-paths.concatJsDest = paths.webroot + "js/site.min.js";
-paths.concatCssDest = paths.webroot + "css/site.min.css";
+var files = {};
+files.js = '**/*.js';
+files.minJs = '**/*.min.js';
+files.css = '**/*.css';
+files.less = '**/*.less';
 
-gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
+gulp.task('check:js', function () {
+  gulp.src(directories.jsSrc + files.js)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
-gulp.task("clean:css", function (cb) {
-    rimraf(paths.concatCssDest, cb);
+gulp.task('clean:js', function () {
+  del(directories.jsDest);
 });
 
-gulp.task("clean", ["clean:js", "clean:css"]);
-
-gulp.task("min:js", function () {
-    gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
-        .pipe(uglify())
-        .pipe(gulp.dest("."));
+gulp.task('build:js', ['check:js', 'clean:js'], function () {
+  gulp.src(directories.jsSrc + files.js, { base: directories.jsSrc })
+    .pipe(gulp.dest(directories.jsDest))
+    .pipe(uglify())
+    .pipe(rename({ extname: '.min.js' }))
+    .pipe(gulp.dest(directories.jsDest));
 });
 
-gulp.task("min:css", function () {
-    gulp.src([paths.css, "!" + paths.minCss])
-        .pipe(concat(paths.concatCssDest))
-        .pipe(cssmin())
-        .pipe(gulp.dest("."));
+gulp.task('check:less', function () {
+  // No idea if it is possible to lint less
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task('clean:css', function () {
+  del(directories.cssDest);
+})
+
+gulp.task('build:css', ['check:less', 'clean:css'], function () {
+  gulp.src(directories.lessSrc + files.less, { base: directories.lessSrc })
+    .pipe(less())
+    .pipe(gulp.dest(directories.cssDest))
+    .pipe(cssmin())
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest(directories.cssDest));
+});
+
+gulp.task('build', ['build:js', 'build:css']);
+
+gulp.task('clean', ['clean:js', 'clean:css']);
+
+gulp.task('watch', function () {
+  gulp.watch(directories.jsSrc + files.js, ['build:js']);
+  gulp.watch(directories.lessSrc + files.less, ['build:css']);
+});
