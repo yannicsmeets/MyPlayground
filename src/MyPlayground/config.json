@@ -1,0 +1,7 @@
+{
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-MyPlayground-db789c3e-8541-49ea-a167-92fa1da05248;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
