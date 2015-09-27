@@ -4,7 +4,7 @@ using MyPlayground.Models;
 
 namespace MyPlayground.Context
 {
-  public class MyPlaygroundDbContext : IdentityDbContext<User>
+  public class MyPlaygroundDbContext : IdentityDbContext<User, Role, string>
   {
     protected override void OnModelCreating(ModelBuilder builder)
     {
