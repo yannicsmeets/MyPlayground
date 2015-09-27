@@ -63,6 +63,8 @@ namespace MyPlayground
       // Add MVC services to the services container.
       services.AddMvc();
 
+      services.AddScoped<UserService>();
+
       services.Configure<DefaultAdminSettings>(Configuration.GetSection("DefaultAdmin"));
     }
 

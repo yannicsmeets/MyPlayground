@@ -8,14 +8,32 @@ using System.Threading.Tasks;
 
 namespace MyPlayground.Controllers
 {
+  public class AccountController : Controller
+  {
+    private readonly UserService service;
 
     public AccountController(
+      UserService service)
+    {
+      this.service = service;
+    }
 
     public IActionResult Index()
 
     [HttpGet]
+    public IActionResult Login(string returnUrl = null)
+    {
+      ViewBag.ReturnUrl = returnUrl;
+      return View();
+    }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+    {
+      if (ModelState.IsValid)
+      {
+        var result = await service.SignIn(model);
 
         if (result.Succeeded)
         {
@@ -29,10 +47,17 @@ namespace MyPlayground.Controllers
         {
           ModelState.AddModelError(string.Empty, "Ongeldige login poging");
         }
+      }
 
       ViewBag.ReturnUrl = returnUrl;
+      return View(model);
+    }
 
     public async Task<IActionResult> LogOff()
+    {
+      await service.SignOut();
+      return RedirectToAction(nameof(HomeController.Index), "Home");
+    }
 
     [HttpGet]
 
@@ -49,6 +74,24 @@ namespace MyPlayground.Controllers
 
 
 
-
+    private void AddErrors(IdentityResult result)
+    {
+      foreach (var error in result.Errors)
+      {
+        ModelState.AddModelError(string.Empty, error.Description);
+      }
     }
+
+    private IActionResult RedirectToLocal(string returnUrl)
+    {
+      if (Url.IsLocalUrl(returnUrl))
+      {
+        return Redirect(returnUrl);
+      }
+      else
+      {
+        return RedirectToAction(nameof(HomeController.Index), "Home");
+      }
+    }
+  }
 }
