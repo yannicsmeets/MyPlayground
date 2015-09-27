@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
+using MyPlayground.Configuration;
+using MyPlayground.Context;
 using MyPlayground.Models;
 using MyPlayground.Services;
+using System;
 
 namespace MyPlayground
 {
