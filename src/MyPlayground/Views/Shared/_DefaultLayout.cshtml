@@ -1,0 +1,56 @@
+﻿@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a asp-controller="Home" asp-action="Index" class="navbar-brand">MyPlayground</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        @RenderSection("menuitems", required: false)
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            @User.Identity.Name
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a asp-controller="Account" asp-action="LogOff">
+                <i class="glyphicon glyphicon-user"></i>
+                Uitloggen
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container body-content">
+  <ol class="breadcrumb">
+    <li>
+      <a asp-controller="Home" asp-action="Index">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </li>
+    @RenderSection("breadcrumb", false)
+  </ol>
+  @RenderBody()
+  <hr />
+  <footer>
+    <p>&copy; @DateTime.Now.Year - MyPlayground</p>
+  </footer>
+</div>
+
+@section scripts {
+  @RenderSection("scripts", false);
+}
