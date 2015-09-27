@@ -64,6 +64,7 @@ namespace MyPlayground
       services.AddMvc();
 
       services.AddScoped<UserService>();
+      services.AddScoped<RoleService>();
 
       services.Configure<DefaultAdminSettings>(Configuration.GetSection("DefaultAdmin"));
     }

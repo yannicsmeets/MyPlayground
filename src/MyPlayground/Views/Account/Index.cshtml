@@ -1,0 +1,73 @@
+﻿@using MyPlayground.Models
+@model IEnumerable<UserViewModel>
+
+@{
+  ViewBag.Title = "Gebruikers";
+  Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h3>Gebruikers</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Gebruikersnaam</th>
+      <th>Email adres</th>
+      <th>Telefoon nummer</th>
+      <th>Rollen</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var user in Model)
+    {
+      <tr>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>@user.PhoneNumber</td>
+        <td>
+          <ul class="no-style">
+            @foreach (var role in user.Roles)
+            {
+              <li>@role</li>
+            }
+          </ul>
+        </td>
+        <td class="text-right">
+            <a asp-action="Update" asp-route-id="@user.Id">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="#" id="@user.Id" class="removeUser">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="text-right">
+  <a asp-action="Create" class="btn btn-primary">Toevoegen</a>
+</div>
+
+@section scripts{
+  <script>
+    $(function () {
+      $('.removeUser').click(function () {
+        $id = $(this).attr('id');
+        removeUser($id);
+      });
+
+      function removeUser(id) {
+        $url = '@Url.Action(action: "Remove")/' + id;
+        $.post($url, function (result) {
+          if (result.error === '') {
+            $('#' + id).closest('tr').remove();
+          } else {
+            alert(result.error);
+          }
+        });
+      }
+    });
+  </script>
+}

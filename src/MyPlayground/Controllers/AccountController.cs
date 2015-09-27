@@ -19,6 +19,10 @@ namespace MyPlayground.Controllers
     }
 
     public IActionResult Index()
+    {
+      var users = service.AllUserViewModels();
+      return View(users);
+    }
 
     [HttpGet]
     public IActionResult Login(string returnUrl = null)
@@ -60,19 +64,78 @@ namespace MyPlayground.Controllers
     }
 
     [HttpGet]
+    public IActionResult Create()
+    {
+      return View();
+    }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(RegisterUserViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        var result = await service.CreateUser(model);
 
         if (result.Succeeded)
         {
           return RedirectToAction("Index");
         }
+        else
         {
+          AddErrors(result);
         }
+      }
 
+      return View(model);
+    }
 
+    [HttpGet]
+    public async Task<IActionResult> Update(string id) //UserId
+    {
+      var model = await service.UpdateUserViewModel(id);
+      return View(model);
+    }
 
+    [HttpPost]
+    public async Task<IActionResult> Update(UpdateUserViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        await service.UpdateUser(model);
+        return RedirectToAction("Index");
+      }
 
+      model.CurrentPassword = null;
+      model.NewPassword = null;
+      model.ConfirmPassword = null;
+      return View(model);
+    }
+
+    [HttpPost]
+    [HttpDelete]
+    public async Task<JsonResult> Remove(string id)
+    {
+      var error = string.Empty;
+
+      try
+      {
+        await service.RemoveUser(id);
+      }
+      catch(MyPlaygroundException e)
+      {
+        error = e.Message;
+      }
+      catch(Exception e)
+      {
+        error = e.Message;
+      }
+
+      return Json(new
+      {
+        error = error
+      });
+    }
 
     private void AddErrors(IdentityResult result)
     {
