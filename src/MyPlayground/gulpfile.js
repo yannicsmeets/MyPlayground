@@ -23,17 +23,17 @@ files.css = '**/*.css';
 files.less = '**/*.less';
 
 gulp.task('check:js', function () {
-  gulp.src(directories.jsSrc + files.js)
+  return gulp.src(directories.jsSrc + files.js)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 gulp.task('clean:js', function () {
-  del(directories.jsDest);
+  return del(directories.jsDest);
 });
 
 gulp.task('build:js', ['check:js', 'clean:js'], function () {
-  gulp.src(directories.jsSrc + files.js, { base: directories.jsSrc })
+  return gulp.src(directories.jsSrc + files.js, { base: directories.jsSrc })
     .pipe(gulp.dest(directories.jsDest))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
@@ -45,11 +45,11 @@ gulp.task('check:less', function () {
 });
 
 gulp.task('clean:css', function () {
-  del(directories.cssDest);
-})
+  return del(directories.cssDest);
+});
 
 gulp.task('build:css', ['check:less', 'clean:css'], function () {
-  gulp.src(directories.lessSrc + files.less, { base: directories.lessSrc })
+  return gulp.src(directories.lessSrc + files.less, { base: directories.lessSrc })
     .pipe(less())
     .pipe(gulp.dest(directories.cssDest))
     .pipe(cssmin())
