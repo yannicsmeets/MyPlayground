@@ -53,7 +53,7 @@ namespace MyPlayground
     }
 
     // Configure is called after ConfigureServices is called.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {
       loggerFactory.MinimumLevel = LogLevel.Information;
       loggerFactory.AddConsole();
@@ -88,6 +88,8 @@ namespace MyPlayground
                   name: "default",
                   template: "{controller=Home}/{action=Index}/{id?}");
       });
+
+      await app.Initialize();
     }
   }
 }
