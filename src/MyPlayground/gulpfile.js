@@ -7,6 +7,7 @@ var gulp = require("gulp"),
     rename = require('gulp-rename'),
     jshint = require('gulp-jshint'),
     less = require('gulp-less'),
+    concatCss = require('gulp-concat-css'),
     project = require('./project.json');
 
 var directories = {};
@@ -54,6 +55,8 @@ gulp.task('build:css', ['check:less', 'clean:css'], function () {
     .pipe(gulp.dest(directories.cssDest))
     .pipe(cssmin())
     .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest(directories.cssDest))
+    .pipe(concatCss('site.css'))
     .pipe(gulp.dest(directories.cssDest));
 });
 
