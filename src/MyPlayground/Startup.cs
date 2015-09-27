@@ -44,8 +44,18 @@ namespace MyPlayground
               options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
       // Add Identity services to the services container.
-      services.AddIdentity<ApplicationUser, IdentityRole>()
-          .AddEntityFrameworkStores<ApplicationDbContext>()
+      services.AddIdentity<User, Role>(options =>
+      {
+        options.Lockout.MaxFailedAccessAttempts = 3;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
+        options.Password.RequireDigit = true;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireNonLetterOrDigit = true;
+        options.Password.RequireUppercase = true;
+        options.User.RequireUniqueEmail = true;
+      })
+          .AddEntityFrameworkStores<MyPlaygroundDbContext>()
           .AddDefaultTokenProviders();
 
       // Add MVC services to the services container.
