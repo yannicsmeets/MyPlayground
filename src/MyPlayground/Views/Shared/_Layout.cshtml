@@ -8,10 +8,11 @@
 
   <environment names="Development">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="~/css/body.css" />
     <link rel="stylesheet" href="~/css/breadcrumb.css" />
     <link rel="stylesheet" href="~/css/dropdown.css" />
-    <link rel="stylesheet" href="~/css/glyphicons.css" />
+    <link rel="stylesheet" href="~/css/icons.css" />
     <link rel="stylesheet" href="~/css/headers.css" />
     <link rel="stylesheet" href="~/css/navbar.css" />
     <link rel="stylesheet" href="~/css/ul.css" />
@@ -24,6 +25,11 @@
           asp-fallback-test-property="visibility"
           asp-fallback-test-value="hidden" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+          asp-fallback-href="~/lib/font-awesome/css/font-awesome.min.css"
+          asp-fallback-test-class="hidden"
+          asp-fallback-test-property="visibility"
+          asp-fallback-test-value="hidden" />
   </environment>
 
   @RenderSection("styles", required: false)
