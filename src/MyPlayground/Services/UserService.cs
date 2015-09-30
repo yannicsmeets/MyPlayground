@@ -101,7 +101,7 @@ namespace MyPlayground.Services
       }
     }
 
-    public async Task RemoveUser(string userId)
+    public async Task DeleteUser(string userId)
     {
       var user = await userManager.FindByIdAsync(userId);
       if (await userManager.IsInRoleAsync(user, Constants.AdminRoleName))

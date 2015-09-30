@@ -59,7 +59,7 @@
       });
 
       function removeUser(id) {
-        $url = '@Url.Action(action: "Remove")/' + id;
+        $url = '@Url.Action(action: "Delete")/' + id;
         $.post($url, function (result) {
           if (result.error === '') {
             $('#' + id).closest('tr').remove();

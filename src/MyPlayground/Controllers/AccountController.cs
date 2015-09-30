@@ -114,13 +114,13 @@ namespace MyPlayground.Controllers
 
     [HttpPost]
     [HttpDelete]
-    public async Task<JsonResult> Remove(string id)
+    public async Task<JsonResult> Delete(string id)
     {
       var error = string.Empty;
 
       try
       {
-        await service.RemoveUser(id);
+        await service.DeleteUser(id);
       }
       catch(MyPlaygroundException e)
       {
