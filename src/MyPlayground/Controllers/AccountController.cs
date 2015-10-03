@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using MyPlayground.Exceptions;
 using MyPlayground.Services;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyPlayground.Controllers
 {
+  [Authorize]
   public class AccountController : Controller
   {
     private readonly UserService service;
@@ -25,6 +27,7 @@ namespace MyPlayground.Controllers
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult Login(string returnUrl = null)
     {
       ViewBag.ReturnUrl = returnUrl;
@@ -33,6 +36,7 @@ namespace MyPlayground.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [AllowAnonymous]
     public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
     {
       if (ModelState.IsValid)
@@ -57,6 +61,7 @@ namespace MyPlayground.Controllers
       return View(model);
     }
 
+    [AllowAnonymous]
     public async Task<IActionResult> LogOff()
     {
       await service.SignOut();
