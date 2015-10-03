@@ -65,7 +65,7 @@ namespace MyPlayground.Controllers
     public async Task<IActionResult> LogOff()
     {
       await service.SignOut();
-      return RedirectToAction(nameof(HomeController.Index), "Home");
+      return RedirectToAction(nameof(AccountController.Login));
     }
 
     [HttpGet]
@@ -84,7 +84,7 @@ namespace MyPlayground.Controllers
 
         if (result.Succeeded)
         {
-          return RedirectToAction("Index");
+          return RedirectToAction(nameof(AccountController.Index));
         }
         else
         {
@@ -108,7 +108,7 @@ namespace MyPlayground.Controllers
       if (ModelState.IsValid)
       {
         await service.UpdateUser(model);
-        return RedirectToAction("Index");
+        return RedirectToAction(nameof(AccountController.Index));
       }
 
       model.CurrentPassword = null;
