@@ -103,6 +103,7 @@ namespace MyPlayground.Controllers
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update(UpdateUserViewModel model)
     {
       if (ModelState.IsValid)
