@@ -119,7 +119,7 @@ namespace MyPlayground.Controllers
 
     [HttpPost]
     [HttpDelete]
-    public async Task<JsonResult> Delete(string id)
+    public async Task<JsonResult> Delete(string id) //UserId
     {
       var error = string.Empty;
 
