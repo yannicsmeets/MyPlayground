@@ -4,6 +4,7 @@ namespace MyPlayground.ViewModels
 {
   public class UpdateUserViewModel
   {
+    [Required]
     public string Id { get; set; }
 
     [Required]
