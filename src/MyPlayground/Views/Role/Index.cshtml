@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RoleViewModel>
+
+@{
+  ViewBag.Title = "Rollen";
+  Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h3>Rollen</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Rol</th>
+      <th>Rechten</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var role in Model)
+    {
+      <tr>
+        <td>@role.Name</td>
+        <td>
+          <ul class="no-style">
+            @foreach (var right in role.Rights)
+            {
+              <li>@right</li>
+            }
+          </ul>
+        </td>
+        <td class="text-right">
+          <a asp-action="Update" asp-route-id="@role.Id">
+            <span class="fa fa-pencil"></span>
+          </a>
+          <a href="#" id="@role.Id" class="removeRole">
+            <span class="fa fa-remove"></span>
+          </a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="text-right">
+  <a asp-action="Create" class="btn btn-primary">Toevoegen</a>
+</div>
+
+@section scripts{
+  <script>
+    $(function () {
+      $('.removeRole').click(function () {
+        $id = $(this).attr('id');
+        removeRole($id);
+      });
+
+      function removeRole(id) {
+        $url = '@Url.Action(action: "Delete")/' + id;
+        $.post($url, function (result) {
+          if (result.error === '') {
+            $('#' + id).closest('tr').remove();
+          } else {
+            alert(result.error);
+          }
+        });
+      }
+    });
+  </script>
+}
