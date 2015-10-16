@@ -1,26 +1,21 @@
 using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Migrations;
 using MyPlayground.Context;
-using Microsoft.Data.Entity.SqlServer.Metadata;
+using Microsoft.Data.Entity.Migrations;
+using Microsoft.Data.Entity.Metadata;
 
 namespace MyPlayground.Migrations
 {
     [DbContext(typeof(MyPlaygroundDbContext))]
+    [Migration("20150923153556_Initial")]
     partial class Initial
     {
-        public override string Id
-        {
-            get { return "20150923153556_Initial"; }
-        }
-
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .Annotation("ProductVersion", "7.0.0-beta7-15540")
-                .Annotation("SqlServer:ValueGenerationStrategy", SqlServerIdentityStrategy.IdentityColumn);
+                .Annotation("ProductVersion", "7.0.0-beta8")
+                .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
                 {
@@ -33,7 +28,7 @@ namespace MyPlayground.Migrations
 
                     b.Property<string>("RoleId");
 
-                    b.Key("Id");
+                    b.HasKey("Id");
 
                     b.Annotation("Relational:TableName", "RoleClaim");
                 });
@@ -49,7 +44,7 @@ namespace MyPlayground.Migrations
 
                     b.Property<string>("UserId");
 
-                    b.Key("Id");
+                    b.HasKey("Id");
 
                     b.Annotation("Relational:TableName", "UserClaim");
                 });
@@ -64,7 +59,7 @@ namespace MyPlayground.Migrations
 
                     b.Property<string>("UserId");
 
-                    b.Key("LoginProvider", "ProviderKey");
+                    b.HasKey("LoginProvider", "ProviderKey");
 
                     b.Annotation("Relational:TableName", "UserLogin");
                 });
@@ -75,7 +70,7 @@ namespace MyPlayground.Migrations
 
                     b.Property<string>("RoleId");
 
-                    b.Key("UserId", "RoleId");
+                    b.HasKey("UserId", "RoleId");
 
                     b.Annotation("Relational:TableName", "UserRole");
                 });
@@ -85,7 +80,7 @@ namespace MyPlayground.Migrations
                     b.Property<string>("Id");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .ConcurrencyToken();
+                        .IsConcurrencyToken();
 
                     b.Property<string>("Name")
                         .Annotation("MaxLength", 256);
@@ -93,7 +88,7 @@ namespace MyPlayground.Migrations
                     b.Property<string>("NormalizedName")
                         .Annotation("MaxLength", 256);
 
-                    b.Key("Id");
+                    b.HasKey("Id");
 
                     b.Index("NormalizedName")
                         .Annotation("Relational:Name", "RoleNameIndex");
@@ -108,7 +103,7 @@ namespace MyPlayground.Migrations
                     b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .ConcurrencyToken();
+                        .IsConcurrencyToken();
 
                     b.Property<DateTimeOffset>("Created");
 
@@ -142,7 +137,7 @@ namespace MyPlayground.Migrations
                     b.Property<string>("UserName")
                         .Annotation("MaxLength", 256);
 
-                    b.Key("Id");
+                    b.HasKey("Id");
 
                     b.Index("NormalizedEmail")
                         .Annotation("Relational:Name", "EmailIndex");
@@ -155,33 +150,33 @@ namespace MyPlayground.Migrations
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
                 {
-                    b.Reference("MyPlayground.Models.Role")
-                        .InverseCollection()
+                    b.HasOne("MyPlayground.Models.Role")
+                        .WithMany()
                         .ForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserClaim<string>", b =>
                 {
-                    b.Reference("MyPlayground.Models.User")
-                        .InverseCollection()
+                    b.HasOne("MyPlayground.Models.User")
+                        .WithMany()
                         .ForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserLogin<string>", b =>
                 {
-                    b.Reference("MyPlayground.Models.User")
-                        .InverseCollection()
+                    b.HasOne("MyPlayground.Models.User")
+                        .WithMany()
                         .ForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole<string>", b =>
                 {
-                    b.Reference("MyPlayground.Models.Role")
-                        .InverseCollection()
+                    b.HasOne("MyPlayground.Models.Role")
+                        .WithMany()
                         .ForeignKey("RoleId");
 
-                    b.Reference("MyPlayground.Models.User")
-                        .InverseCollection()
+                    b.HasOne("MyPlayground.Models.User")
+                        .WithMany()
                         .ForeignKey("UserId");
                 });
         }

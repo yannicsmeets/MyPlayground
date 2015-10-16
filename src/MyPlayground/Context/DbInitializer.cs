@@ -18,7 +18,8 @@ namespace MyPlayground.Context
       var context = app.ApplicationServices.GetService<MyPlaygroundDbContext>();
       var userManager = app.ApplicationServices.GetService<UserManager<User>>();
       var roleManager = app.ApplicationServices.GetService<RoleManager<Role>>();
-      var defaultAdminSettings = app.ApplicationServices.GetService<IOptions<DefaultAdminSettings>>()?.Options;
+      var defaultAdminSettings = app.ApplicationServices.GetService<IOptions<DefaultAdminSettings>>()?.Value;
+
 
       // Create all roles
       var roleNames = new List<string> { Constants.AdminRoleName };

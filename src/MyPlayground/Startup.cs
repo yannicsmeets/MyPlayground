@@ -22,9 +22,10 @@ namespace MyPlayground
     {
       // Setup configuration sources.
 
-      var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
-          .AddJsonFile("config.json")
-          .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
+      var builder = new ConfigurationBuilder()
+          .SetBasePath(appEnv.ApplicationBasePath)
+          .AddJsonFile("appsettings.json")
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
       if (env.IsDevelopment())
       {
@@ -82,15 +83,18 @@ namespace MyPlayground
       if (env.IsDevelopment())
       {
         app.UseBrowserLink();
-        app.UseErrorPage();
+        app.UseDeveloperExceptionPage();
         app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
       }
       else
       {
         // Add Error handling middleware which catches all application specific errors and
         // sends the request to the following path or controller action.
-        app.UseErrorHandler("/Home/Error");
+        app.UseExceptionHandler("/Home/Error");
       }
+
+      // Add the platform handler to the request pipeline.
+      app.UseIISPlatformHandler();
 
       // Add static files to the request pipeline.
       app.UseStaticFiles();
